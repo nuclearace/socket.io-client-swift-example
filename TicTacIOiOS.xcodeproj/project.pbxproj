@@ -7,38 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		749E88631AB0F4FF001A52C5 /* SocketAckHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E885C1AB0F4FF001A52C5 /* SocketAckHandler.swift */; };
+		749E88641AB0F4FF001A52C5 /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E885D1AB0F4FF001A52C5 /* SocketEngine.swift */; };
+		749E88651AB0F4FF001A52C5 /* SocketEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E885E1AB0F4FF001A52C5 /* SocketEvent.swift */; };
+		749E88661AB0F4FF001A52C5 /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E885F1AB0F4FF001A52C5 /* SocketEventHandler.swift */; };
+		749E88671AB0F4FF001A52C5 /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E88601AB0F4FF001A52C5 /* SocketIOClient.swift */; };
+		749E88681AB0F4FF001A52C5 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E88611AB0F4FF001A52C5 /* SwiftRegex.swift */; };
+		749E88691AB0F4FF001A52C5 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749E88621AB0F4FF001A52C5 /* WebSocket.swift */; };
 		74AC61241AAB680200DE3B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61231AAB680200DE3B77 /* AppDelegate.swift */; };
 		74AC61261AAB680200DE3B77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61251AAB680200DE3B77 /* ViewController.swift */; };
 		74AC61291AAB680200DE3B77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74AC61271AAB680200DE3B77 /* Main.storyboard */; };
 		74AC612B1AAB680200DE3B77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74AC612A1AAB680200DE3B77 /* Images.xcassets */; };
 		74AC612E1AAB680200DE3B77 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74AC612C1AAB680200DE3B77 /* LaunchScreen.xib */; };
-		74AC613A1AAB680200DE3B77 /* TicTacIOiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61391AAB680200DE3B77 /* TicTacIOiOSTests.swift */; };
-		74AC614A1AAB682000DE3B77 /* SocketAckHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61441AAB682000DE3B77 /* SocketAckHandler.swift */; };
-		74AC614B1AAB682000DE3B77 /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61451AAB682000DE3B77 /* SocketEngine.swift */; };
-		74AC614C1AAB682000DE3B77 /* SocketEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61461AAB682000DE3B77 /* SocketEvent.swift */; };
-		74AC614D1AAB682000DE3B77 /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61471AAB682000DE3B77 /* SocketEventHandler.swift */; };
-		74AC614E1AAB682000DE3B77 /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61481AAB682000DE3B77 /* SocketIOClient.swift */; };
-		74AC614F1AAB682000DE3B77 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61491AAB682000DE3B77 /* SwiftRegex.swift */; };
-		74AC61581AAB685900DE3B77 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61511AAB685900DE3B77 /* base64.c */; };
-		74AC61591AAB685900DE3B77 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61541AAB685900DE3B77 /* NSData+SRB64Additions.m */; };
-		74AC615A1AAB685900DE3B77 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AC61571AAB685900DE3B77 /* SRWebSocket.m */; };
-		74AC615C1AAB686300DE3B77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74AC615B1AAB686300DE3B77 /* Foundation.framework */; };
-		74AC615E1AAB686E00DE3B77 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 74AC615D1AAB686E00DE3B77 /* libicucore.dylib */; };
-		74AC61601AAB687300DE3B77 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74AC615F1AAB687300DE3B77 /* CFNetwork.framework */; };
-		74AC61621AAB687800DE3B77 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74AC61611AAB687800DE3B77 /* Security.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		74AC61341AAB680200DE3B77 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 74AC61161AAB680200DE3B77 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 74AC611D1AAB680200DE3B77;
-			remoteInfo = TicTacIOiOS;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		749E885C1AB0F4FF001A52C5 /* SocketAckHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckHandler.swift; sourceTree = "<group>"; };
+		749E885D1AB0F4FF001A52C5 /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
+		749E885E1AB0F4FF001A52C5 /* SocketEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEvent.swift; sourceTree = "<group>"; };
+		749E885F1AB0F4FF001A52C5 /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
+		749E88601AB0F4FF001A52C5 /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
+		749E88611AB0F4FF001A52C5 /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
+		749E88621AB0F4FF001A52C5 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		74AC611E1AAB680200DE3B77 /* TicTacIOiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacIOiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AC61221AAB680200DE3B77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74AC61231AAB680200DE3B77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,42 +36,12 @@
 		74AC61281AAB680200DE3B77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74AC612A1AAB680200DE3B77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		74AC612D1AAB680200DE3B77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		74AC61331AAB680200DE3B77 /* TicTacIOiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacIOiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AC61381AAB680200DE3B77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74AC61391AAB680200DE3B77 /* TicTacIOiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacIOiOSTests.swift; sourceTree = "<group>"; };
-		74AC61441AAB682000DE3B77 /* SocketAckHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckHandler.swift; sourceTree = "<group>"; };
-		74AC61451AAB682000DE3B77 /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
-		74AC61461AAB682000DE3B77 /* SocketEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEvent.swift; sourceTree = "<group>"; };
-		74AC61471AAB682000DE3B77 /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
-		74AC61481AAB682000DE3B77 /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
-		74AC61491AAB682000DE3B77 /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
-		74AC61511AAB685900DE3B77 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
-		74AC61521AAB685900DE3B77 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		74AC61531AAB685900DE3B77 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
-		74AC61541AAB685900DE3B77 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
-		74AC61551AAB685900DE3B77 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
-		74AC61561AAB685900DE3B77 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
-		74AC61571AAB685900DE3B77 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
-		74AC615B1AAB686300DE3B77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		74AC615D1AAB686E00DE3B77 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		74AC615F1AAB687300DE3B77 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		74AC61611AAB687800DE3B77 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		74AC61631AAB68E500DE3B77 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		74AC611B1AAB680200DE3B77 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				74AC61621AAB687800DE3B77 /* Security.framework in Frameworks */,
-				74AC61601AAB687300DE3B77 /* CFNetwork.framework in Frameworks */,
-				74AC615E1AAB686E00DE3B77 /* libicucore.dylib in Frameworks */,
-				74AC615C1AAB686300DE3B77 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		74AC61301AAB680200DE3B77 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -91,13 +51,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		749E885B1AB0F4FF001A52C5 /* SwiftIO */ = {
+			isa = PBXGroup;
+			children = (
+				749E885C1AB0F4FF001A52C5 /* SocketAckHandler.swift */,
+				749E885D1AB0F4FF001A52C5 /* SocketEngine.swift */,
+				749E885E1AB0F4FF001A52C5 /* SocketEvent.swift */,
+				749E885F1AB0F4FF001A52C5 /* SocketEventHandler.swift */,
+				749E88601AB0F4FF001A52C5 /* SocketIOClient.swift */,
+				749E88611AB0F4FF001A52C5 /* SwiftRegex.swift */,
+				749E88621AB0F4FF001A52C5 /* WebSocket.swift */,
+			);
+			path = SwiftIO;
+			sourceTree = "<group>";
+		};
 		74AC61151AAB680200DE3B77 = {
 			isa = PBXGroup;
 			children = (
-				74AC61611AAB687800DE3B77 /* Security.framework */,
-				74AC615F1AAB687300DE3B77 /* CFNetwork.framework */,
-				74AC615D1AAB686E00DE3B77 /* libicucore.dylib */,
-				74AC615B1AAB686300DE3B77 /* Foundation.framework */,
 				74AC61201AAB680200DE3B77 /* TicTacIOiOS */,
 				74AC61361AAB680200DE3B77 /* TicTacIOiOSTests */,
 				74AC611F1AAB680200DE3B77 /* Products */,
@@ -108,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				74AC611E1AAB680200DE3B77 /* TicTacIOiOS.app */,
-				74AC61331AAB680200DE3B77 /* TicTacIOiOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,15 +85,13 @@
 		74AC61201AAB680200DE3B77 /* TicTacIOiOS */ = {
 			isa = PBXGroup;
 			children = (
-				74AC61501AAB685900DE3B77 /* SocketRocket */,
-				74AC61431AAB682000DE3B77 /* SwiftIO */,
+				749E885B1AB0F4FF001A52C5 /* SwiftIO */,
 				74AC61231AAB680200DE3B77 /* AppDelegate.swift */,
 				74AC61251AAB680200DE3B77 /* ViewController.swift */,
 				74AC61271AAB680200DE3B77 /* Main.storyboard */,
 				74AC612A1AAB680200DE3B77 /* Images.xcassets */,
 				74AC612C1AAB680200DE3B77 /* LaunchScreen.xib */,
 				74AC61211AAB680200DE3B77 /* Supporting Files */,
-				74AC61631AAB68E500DE3B77 /* Bridging-Header.h */,
 			);
 			path = TicTacIOiOS;
 			sourceTree = "<group>";
@@ -154,33 +121,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		74AC61431AAB682000DE3B77 /* SwiftIO */ = {
-			isa = PBXGroup;
-			children = (
-				74AC61441AAB682000DE3B77 /* SocketAckHandler.swift */,
-				74AC61451AAB682000DE3B77 /* SocketEngine.swift */,
-				74AC61461AAB682000DE3B77 /* SocketEvent.swift */,
-				74AC61471AAB682000DE3B77 /* SocketEventHandler.swift */,
-				74AC61481AAB682000DE3B77 /* SocketIOClient.swift */,
-				74AC61491AAB682000DE3B77 /* SwiftRegex.swift */,
-			);
-			path = SwiftIO;
-			sourceTree = "<group>";
-		};
-		74AC61501AAB685900DE3B77 /* SocketRocket */ = {
-			isa = PBXGroup;
-			children = (
-				74AC61511AAB685900DE3B77 /* base64.c */,
-				74AC61521AAB685900DE3B77 /* base64.h */,
-				74AC61531AAB685900DE3B77 /* NSData+SRB64Additions.h */,
-				74AC61541AAB685900DE3B77 /* NSData+SRB64Additions.m */,
-				74AC61551AAB685900DE3B77 /* SocketRocket-Prefix.pch */,
-				74AC61561AAB685900DE3B77 /* SRWebSocket.h */,
-				74AC61571AAB685900DE3B77 /* SRWebSocket.m */,
-			);
-			path = SocketRocket;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,24 +141,6 @@
 			productReference = 74AC611E1AAB680200DE3B77 /* TicTacIOiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		74AC61321AAB680200DE3B77 /* TicTacIOiOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 74AC61401AAB680200DE3B77 /* Build configuration list for PBXNativeTarget "TicTacIOiOSTests" */;
-			buildPhases = (
-				74AC612F1AAB680200DE3B77 /* Sources */,
-				74AC61301AAB680200DE3B77 /* Frameworks */,
-				74AC61311AAB680200DE3B77 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				74AC61351AAB680200DE3B77 /* PBXTargetDependency */,
-			);
-			name = TicTacIOiOSTests;
-			productName = TicTacIOiOSTests;
-			productReference = 74AC61331AAB680200DE3B77 /* TicTacIOiOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -230,10 +152,6 @@
 				TargetAttributes = {
 					74AC611D1AAB680200DE3B77 = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					74AC61321AAB680200DE3B77 = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 74AC611D1AAB680200DE3B77;
 					};
 				};
 			};
@@ -251,7 +169,6 @@
 			projectRoot = "";
 			targets = (
 				74AC611D1AAB680200DE3B77 /* TicTacIOiOS */,
-				74AC61321AAB680200DE3B77 /* TicTacIOiOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -267,13 +184,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		74AC61311AAB680200DE3B77 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -281,37 +191,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74AC61591AAB685900DE3B77 /* NSData+SRB64Additions.m in Sources */,
-				74AC614D1AAB682000DE3B77 /* SocketEventHandler.swift in Sources */,
-				74AC614B1AAB682000DE3B77 /* SocketEngine.swift in Sources */,
+				749E88661AB0F4FF001A52C5 /* SocketEventHandler.swift in Sources */,
+				749E88641AB0F4FF001A52C5 /* SocketEngine.swift in Sources */,
 				74AC61261AAB680200DE3B77 /* ViewController.swift in Sources */,
-				74AC614F1AAB682000DE3B77 /* SwiftRegex.swift in Sources */,
-				74AC615A1AAB685900DE3B77 /* SRWebSocket.m in Sources */,
-				74AC61581AAB685900DE3B77 /* base64.c in Sources */,
-				74AC614C1AAB682000DE3B77 /* SocketEvent.swift in Sources */,
-				74AC614E1AAB682000DE3B77 /* SocketIOClient.swift in Sources */,
-				74AC614A1AAB682000DE3B77 /* SocketAckHandler.swift in Sources */,
+				749E88681AB0F4FF001A52C5 /* SwiftRegex.swift in Sources */,
+				749E88651AB0F4FF001A52C5 /* SocketEvent.swift in Sources */,
+				749E88671AB0F4FF001A52C5 /* SocketIOClient.swift in Sources */,
+				749E88631AB0F4FF001A52C5 /* SocketAckHandler.swift in Sources */,
+				749E88691AB0F4FF001A52C5 /* WebSocket.swift in Sources */,
 				74AC61241AAB680200DE3B77 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		74AC612F1AAB680200DE3B77 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				74AC613A1AAB680200DE3B77 /* TicTacIOiOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		74AC61351AAB680200DE3B77 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 74AC611D1AAB680200DE3B77 /* TicTacIOiOS */;
-			targetProxy = 74AC61341AAB680200DE3B77 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		74AC61271AAB680200DE3B77 /* Main.storyboard */ = {
@@ -369,7 +261,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -408,7 +300,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -424,7 +316,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TicTacIOiOS/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_WHOLE_MODULE_OPTIMIZATION = NO;
 			};
@@ -438,43 +330,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TicTacIOiOS/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_WHOLE_MODULE_OPTIMIZATION = NO;
-			};
-			name = Release;
-		};
-		74AC61411AAB680200DE3B77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TicTacIOiOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TicTacIOiOS.app/TicTacIOiOS";
-			};
-			name = Debug;
-		};
-		74AC61421AAB680200DE3B77 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TicTacIOiOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TicTacIOiOS.app/TicTacIOiOS";
 			};
 			name = Release;
 		};
@@ -495,15 +353,6 @@
 			buildConfigurations = (
 				74AC613E1AAB680200DE3B77 /* Debug */,
 				74AC613F1AAB680200DE3B77 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		74AC61401AAB680200DE3B77 /* Build configuration list for PBXNativeTarget "TicTacIOiOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				74AC61411AAB680200DE3B77 /* Debug */,
-				74AC61421AAB680200DE3B77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
