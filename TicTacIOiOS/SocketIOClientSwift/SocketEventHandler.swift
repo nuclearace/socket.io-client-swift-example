@@ -1,9 +1,9 @@
 //
-//  SocketAckHandler.swift
+//  EventHandler.swift
 //  Socket.IO-Swift
 //
-//  Created by Erik Little on 2/14/15.
-
+//  Created by Erik Little on 1/18/15.
+//
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -24,26 +24,25 @@
 
 import Foundation
 
-public typealias AckCallback = (NSArray?) -> Void
+private func emitAckCallback(socket:SocketIOClient, num:Int)
+    // Curried
+    (items:AnyObject...) -> Void {
+        socket.emitAck(num, withData: items)
+}
 
-@objc public class SocketAckHandler {
-    let ackNum:Int!
+class SocketEventHandler {
     let event:String!
-    var callback:AckCallback?
+    let callback:NormalCallback?
     
-    init(event:String, ackNum:Int = 0) {
-        self.ackNum = ackNum
+    init(event:String, callback:NormalCallback) {
         self.event = event
-    }
-    
-    func onAck(callback:AckCallback) {
         self.callback = callback
     }
     
-    func executeAck(data:NSArray?) {
-        dispatch_async(dispatch_get_main_queue()) {[cb = self.callback] in
-            cb?(data)
-            return
-        }
+    func executeCallback(_ items:NSArray? = nil, withAck ack:Int? = nil, withAckType type:Int? = nil,
+        withSocket socket:SocketIOClient? = nil) {
+            dispatch_async(dispatch_get_main_queue()) {[weak self] in
+                self?.callback?(items, ack != nil ? emitAckCallback(socket!, ack!) : nil)
+            }
     }
 }

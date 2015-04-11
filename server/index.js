@@ -154,15 +154,15 @@ Game.prototype.playerMove = function(player, x, y) {
     }
 
     this.moveCount++
-        if (player["name"] === "X") {
-            this.currentTurn = "O"
-            this.player1.socket.emit("currentTurn", "O")
-            this.player2.socket.emit("currentTurn", "O")
-        } else {
-            this.currentTurn = "X"
-            this.player1.socket.emit("currentTurn", "X")
-            this.player2.socket.emit("currentTurn", "X")
-        }
+    if (player["name"] === "X") {
+        this.currentTurn = "O"
+        this.player1.socket.emit("currentTurn", "O")
+        this.player2.socket.emit("currentTurn", "O")
+    } else {
+        this.currentTurn = "X"
+        this.player1.socket.emit("currentTurn", "X")
+        this.player2.socket.emit("currentTurn", "X")
+    }
 }
 
 Game.prototype.resetGame = function() {

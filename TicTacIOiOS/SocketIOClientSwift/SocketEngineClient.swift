@@ -1,8 +1,8 @@
 //
-//  EventHandler.swift
+//  SocketEngineClient.swift
 //  Socket.IO-Swift
 //
-//  Created by Erik Little on 1/18/15.
+//  Created by Erik Little on 3/19/15.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,35 +21,22 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
 import Foundation
 
-public typealias NormalCallback = (NSArray?, AckEmitter?) -> Void
-public typealias AnyHandler = (event:String, items:AnyObject?)
-public typealias AckEmitter = (AnyObject...) -> Void
-
-private func emitAckCallback(socket:SocketIOClient, num:Int, type:Int) -> AckEmitter {
-    func emitter(items:AnyObject...) {
-        socket.emitAck(num, withData: items, withAckType: type)
-    }
+@objc public protocol SocketEngineClient {
+    var handleQueue:dispatch_queue_attr_t! {get}
+    var emitQueue:dispatch_queue_attr_t! {get}
+    var reconnecting:Bool {get}
+    var socketURL:String {get}
+    var secure:Bool {get}
     
-    return emitter
-}
-
-class SocketEventHandler {
-    let event:String!
-    let callback:NormalCallback?
-    
-    init(event:String, callback:NormalCallback) {
-        self.event = event
-        self.callback = callback
-    }
-    
-    func executeCallback(_ items:NSArray? = nil, withAck ack:Int? = nil, withAckType type:Int? = nil,
-        withSocket socket:SocketIOClient? = nil) {
-            dispatch_async(dispatch_get_main_queue()) {[weak self] in
-                self?.callback?(items, ack != nil ? emitAckCallback(socket!, ack!, type!) : nil)
-                return
-            }
-    }
+    func didError(reason:AnyObject)
+    func engineDidForceClose(reason:String)
+    func parseSocketMessage(msg:String)
+    func parseBinaryData(data:NSData)
+    func pollingDidFail(err:String)
+    func webSocketDidCloseWithCode(code:Int, reason:String)
+    func webSocketDidFailWithError(error:NSError)
 }
