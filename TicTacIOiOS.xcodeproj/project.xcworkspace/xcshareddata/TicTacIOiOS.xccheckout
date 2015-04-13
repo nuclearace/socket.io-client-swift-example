@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>469C9D5A-212B-439B-B930-A5ABB47F1955</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TicTacIOiOS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D9E1DCB9D67A66BF9037B8BEE764D8E4A3609BDF</key>
+		<string>https://github.com/nuclearace/socket.io-client-swift-example.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TicTacIOiOS.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D9E1DCB9D67A66BF9037B8BEE764D8E4A3609BDF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nuclearace/socket.io-client-swift-example.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D9E1DCB9D67A66BF9037B8BEE764D8E4A3609BDF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D9E1DCB9D67A66BF9037B8BEE764D8E4A3609BDF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TicTacIOiOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
