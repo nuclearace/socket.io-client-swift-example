@@ -1,0 +1,3 @@
+[submodule "TicTacIOiOS/SocketIOClientSwift"]
+	path = TicTacIOiOS/SocketIOClientSwift
+	url = https://github.com/socketio/socket.io-client-swift
