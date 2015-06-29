@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var btn7:UIButton!
     @IBOutlet weak var btn8:UIButton!
     @IBOutlet weak var label:UILabel!
-    let socket = SocketIOClient(socketURL: "localhost:8900", opts: ["log": true])
+    let socket = SocketIOClient(socketURL: "localhost:8900")
     var name:String?
     var resetAck:AckEmitter?
     
