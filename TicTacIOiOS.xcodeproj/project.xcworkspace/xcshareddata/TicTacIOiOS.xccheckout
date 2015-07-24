@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>469C9D5A-212B-439B-B930-A5ABB47F1955</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>TicTacIOiOS</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>01C4019DAB2F13C7FB458F088D0A991884C46F1A</key>
@@ -16,11 +16,11 @@
 		<string>https://github.com/nuclearace/socket.io-client-swift-example.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TicTacIOiOS.xcodeproj/project.xcworkspace</string>
+	<string>TicTacIOiOS.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>01C4019DAB2F13C7FB458F088D0A991884C46F1A</key>
-		<string>../..TicTacIOiOS/SocketIOClientSwift/</string>
+		<string>../../TicTacIOiOS/SocketIOClientSwift/</string>
 		<key>D9E1DCB9D67A66BF9037B8BEE764D8E4A3609BDF</key>
 		<string>../..</string>
 	</dict>
