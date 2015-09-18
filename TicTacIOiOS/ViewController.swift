@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var label:UILabel!
     let socket = SocketIOClient(socketURL: "localhost:8900")
     var name:String?
-    var resetAck:AckEmitter?
+    var resetAck:SocketAckEmitter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +45,19 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }
         
         self.socket.on("name") {[weak self] data, ack in
-            if let name = data?[0] as? String {
+            if let name = data[0] as? String {
                 self?.name = name
             }
         }
         
         self.socket.on("playerMove") {[weak self] data, ack in
-            if let name = data?[0] as? String, x = data?[1] as? Int, y = data?[2] as? Int {
+            if let name = data[0] as? String, x = data[1] as? Int, y = data[2] as? Int {
                 self?.handlePlayerMove(name, coord: (x, y))
             }
         }
         
         self.socket.on("win") {[weak self] data, ack in
-            if let name = data?[0] as? String, typeDict = data?[1] as? NSDictionary {
+            if let name = data[0] as? String, typeDict = data[1] as? NSDictionary {
                 self?.handleWin(name, type: typeDict)
             }
         }
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }
         
         self.socket.on("currentTurn") {[weak self] data, ack in
-            if let name = data?[0] as? String {
+            if let name = data[0] as? String {
                 self?.handleCurrentTurn(name)
                 
             }
@@ -86,7 +86,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             exit(0)
         }
         
-        self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
+        self.socket.onAny {print("Got event: \($0.event), with items: \($0.items)")}
     }
     
     @IBAction func btnClicked(btn:UIButton) {
@@ -227,7 +227,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         self.btn7.enabled = true
         self.btn8.enabled = true
         
-        self.view.layer.sublayers.removeLast()
+        self.view.layer.sublayers?.removeLast()
         self.label.text = "Waiting for Opponent"
     }
     
@@ -280,10 +280,10 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     func alertView(alertView:UIAlertView, clickedButtonAtIndex buttonIndex:Int) {
         if buttonIndex == 0 {
-            self.resetAck?(false)
+            self.resetAck?.with(false)
         } else {
             self.handleGameReset()
-            self.resetAck?(true)
+            self.resetAck?.with(true)
         }
     }
 }
