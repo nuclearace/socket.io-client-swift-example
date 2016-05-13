@@ -21,6 +21,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     let socket = SocketIOClient(socketURL: NSURL(string:"http://localhost:8900")!)
     var name: String?
     var resetAck: SocketAckEmitter?
+    let backgroundGrad = CAGradientLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +29,18 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         addHandlers()
         socket.connect()
         
-        let grad = CAGradientLayer()
-        grad.frame = self.view.bounds
+        
+        backgroundGrad.frame = self.view.bounds
         
         let colors = [UIColor(red: 127, green: 0, blue: 127, alpha: 1).CGColor,
             UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor]
         
-        grad.colors = colors
-        view.layer.insertSublayer(grad, atIndex: 0)
+        backgroundGrad.colors = colors
+        view.layer.insertSublayer(backgroundGrad, atIndex: 0)
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        backgroundGrad.frame = self.view.bounds
     }
     
     func addHandlers() {
