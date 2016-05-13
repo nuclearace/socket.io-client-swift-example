@@ -80,11 +80,18 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }
         
         socket.on("gameReset") {[weak self] data, ack in
-            let alert = UIAlertView(title: "Play Again?",
-                message: "Do you want to play another round?", delegate: self,
-                cancelButtonTitle: "No", otherButtonTitles: "Yes")
-            self?.resetAck = ack
-            alert.show()
+            let alert = UIAlertController(title: "Play Again?", message: "Do you want to play another round?", preferredStyle: .Alert)
+            
+            let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (UIAlertAction) in
+                self!.resetAck?.with(false)
+                })
+            let noButton = UIAlertAction(title: "No", style: .Cancel, handler: { (UIAlertAction) in
+                self!.handleGameReset()
+                self!.resetAck?.with(true)
+            })
+            alert.addAction(yesButton)
+            alert.addAction(noButton)
+            self!.presentViewController(alert, animated: true, completion: nil)
         }
         
         socket.on("gameOver") {data, ack in
@@ -280,15 +287,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     func handleWin(name: String, type: NSDictionary) {
         label.text = "Player \(name) won!"
         drawWinLine(type)
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 0 {
-            resetAck?.with(false)
-        } else {
-            handleGameReset()
-            resetAck?.with(true)
-        }
     }
 }
 
