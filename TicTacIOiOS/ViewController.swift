@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     let backgroundGrad = CAGradientLayer()
     
     var inputTextField: UITextField?
-    var socket: SocketIOClient!
+    var socket: SocketIOClient?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,43 +60,43 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     func addHandlers() {
         print(socket)
-        socket.on("startGame") {[weak self] data, ack in
+        socket?.on("startGame") {[weak self] data, ack in
             self?.handleStart()
             return
         }
         
-        socket.on("name") {[weak self] data, ack in
+        socket?.on("name") {[weak self] data, ack in
             if let name = data[0] as? String {
                 self?.name = name
             }
         }
         
         
-        socket.on("playerMove") {[weak self] data, ack in
+        socket?.on("playerMove") {[weak self] data, ack in
             if let name = data[0] as? String, x = data[1] as? Int, y = data[2] as? Int {
                 self?.handlePlayerMove(name, coord: (x, y))
             }
         }
         
-        socket.on("win") {[weak self] data, ack in
+        socket?.on("win") {[weak self] data, ack in
             if let name = data[0] as? String, typeDict = data[1] as? NSDictionary {
                 self?.handleWin(name, type: typeDict)
             }
         }
         
-        socket.on("draw") {[weak self] data, ack in
+        socket?.on("draw") {[weak self] data, ack in
             self?.handleDraw()
             return
         }
         
-        socket.on("currentTurn") {[weak self] data, ack in
+        socket?.on("currentTurn") {[weak self] data, ack in
             if let name = data[0] as? String {
                 self?.handleCurrentTurn(name)
                 
             }
         }
         
-        socket.on("gameReset") {[weak self] data, ack in
+        socket?.on("gameReset") {[weak self] data, ack in
             let alert = UIAlertController(title: "Play Again?", message: "Do you want to play another round?", preferredStyle: .Alert)
             
             let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (UIAlertAction) in
@@ -111,11 +111,11 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             self!.presentViewController(alert, animated: true, completion: nil)
         }
         
-        socket.on("gameOver") {data, ack in
+        socket?.on("gameOver") {data, ack in
             exit(0)
         }
         
-        socket.onAny {print("Got event: \($0.event), with items: \($0.items)")}
+        socket?.onAny {print("Got event: \($0.event), with items: \($0.items)")}
     }
     
     @IBAction func btnClicked(btn: UIButton) {
@@ -323,7 +323,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             print("Attempting to connect to http://" + ip + ":8900")
             self.socket = SocketIOClient(socketURL: NSURL(string: ("http://" + ip + ":8900"))!)
             self.addHandlers()
-            self.socket.connect()
+            self.socket?.connect()
             
         }))
         presentViewController(newWordPrompt, animated: true, completion: nil)
