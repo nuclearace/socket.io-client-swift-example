@@ -143,9 +143,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         default:
             coord = (-1, -1)
         }
-        if let socket = socket {
-            socket.emit("playerMove", coord.x, coord.y)
-        }
+        socket?.emit("playerMove", coord.x, coord.y)
     }
     
     func drawWinLine(type: NSDictionary) {
