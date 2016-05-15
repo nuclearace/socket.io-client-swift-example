@@ -39,7 +39,7 @@ Now you just need to run the project on a real device.
 
 looks like this.
 <center>
-![](../documentation/input_IP_Address.png)
+![](/documentation/input_IP_Address.png)
 <center>
 
 #### Get Your IP Address
