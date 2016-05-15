@@ -24,21 +24,30 @@ Open the project directory in terminal and spin up the server localy.
 This launches a node server on your local machine listening on port `8900`.
 
 ### Setup First Client
-open the socket.io-client-swift-example project in XCode.
-If you are in terminal in the project directory you can.
+Open the socket.io-client-swift-example project in XCode.
+Via terminal navigate to the project directory and type this.
  - `open -a Xcode TicTacIOiOS.xcodeproj`
+Or open via finder.
 
 Select a simulator `hit Run`, the app will build and once it connects to the server you will get a "adding player" message in your terminal window.
+
 ### Setup Second Client
-Now here is the hard part. In order to play TicTacToe you need two devices but running the app on your phone will not work out of the box because it needs to know the address of the server. Here is how to set that up.
+Now you just need to run the project on a real device.
+ - Connect your phone via lightning connector to your computer.
+ - Select your phone as the device and hit `run`.
+ - Once the app launches you will be promted with a Alet asking for the IP Address of the server.
+
+looks like this.
+<center>
+![](../documentation/input_IP_Address.png)
+<center>
 
 #### Get Your IP Address
+ - On Your computer that is running the example server go to terminal and type. 
+        - `open /System/Library/PreferencePanes/Network.prefPane/`
 
- - `open /System/Library/PreferencePanes/Network.prefPane/`
+ - Look for your "IP Address" and type it into your phone.
 
-then look for your "IP Address" copy that and replace line 21
- - `let socket = SocketIOClient(socketURL: NSURL(string:"http://localhost:8900")!)` with -> `let socket = SocketIOClient(socketURL: NSURL(string:"http://YOUR_IP_ADRESS_HERE:8900")!)`
-
-Build and run the app on your device. Once again you should get "adding player" in the terminal. 
+You should see a "adding player" message appear on the terminal. That means the Phone sucsessfully connected to the server.xc
 
 Now you can play TicTacToe with your self. Have fun 😱
