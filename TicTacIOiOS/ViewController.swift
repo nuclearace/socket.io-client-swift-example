@@ -18,32 +18,48 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var btn7:UIButton!
     @IBOutlet weak var btn8:UIButton!
     @IBOutlet weak var label:UILabel!
-    let socket = SocketIOClient(socketURL: NSURL(string:"http://localhost:8900")!)
+    
     var name: String?
     var resetAck: SocketAckEmitter?
     let backgroundGrad = CAGradientLayer()
     
+    var inputTextField: UITextField?
+    var socket: SocketIOClient!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        addHandlers()
-        socket.connect()
-        
         
         backgroundGrad.frame = self.view.bounds
         
         let colors = [UIColor(red: 127, green: 0, blue: 127, alpha: 1).CGColor,
-            UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor]
+                      UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor]
         
         backgroundGrad.colors = colors
         view.layer.insertSublayer(backgroundGrad, atIndex: 0)
+
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        // Check it the user in on a simulator is so default to localhost if not prompt for the IPAddress of the example server.
+        
+        #if (arch(i386) || arch(x86_64))
+            socket = SocketIOClient(socketURL: NSURL(string:"http://localhost:8900")!)
+            addHandlers()
+            socket!.connect()
+        #else
+            promptUserOnDevice()
+        #endif
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         backgroundGrad.frame = self.view.bounds
     }
     
     func addHandlers() {
+        print(socket)
         socket.on("startGame") {[weak self] data, ack in
             self?.handleStart()
             return
@@ -54,6 +70,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 self?.name = name
             }
         }
+        
         
         socket.on("playerMove") {[weak self] data, ack in
             if let name = data[0] as? String, x = data[1] as? Int, y = data[2] as? Int {
@@ -84,7 +101,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             
             let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (UIAlertAction) in
                 self!.resetAck?.with(false)
-                })
+            })
             let noButton = UIAlertAction(title: "No", style: .Cancel, handler: { (UIAlertAction) in
                 self!.handleGameReset()
                 self!.resetAck?.with(true)
@@ -126,8 +143,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         default:
             coord = (-1, -1)
         }
-        
-        socket.emit("playerMove", coord.x, coord.y)
+        if let socket = socket {
+            socket.emit("playerMove", coord.x, coord.y)
+        }
     }
     
     func drawWinLine(type: NSDictionary) {
@@ -287,6 +305,33 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     func handleWin(name: String, type: NSDictionary) {
         label.text = "Player \(name) won!"
         drawWinLine(type)
+    }
+    
+    // Prompt for user to enter IP Address of the server.
+    func promptUserOnDevice() {
+        let newWordPrompt = UIAlertController(title: "Server IP Address", message: "Open your System Preferences on the computer running the example server and enter the ip address of that computer to connect to it", preferredStyle: UIAlertControllerStyle.Alert)
+        newWordPrompt.addTextFieldWithConfigurationHandler({(textField: UITextField) in
+            textField.placeholder = "IP Address"
+            self.inputTextField = textField
+            
+        })
+        newWordPrompt.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        newWordPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:{ (action) -> Void in
+            let textfeild = newWordPrompt.textFields![0] as UITextField
+            
+            guard let ip = textfeild.text else { return }
+            print("Attempting to connect to http://" + ip + ":8900")
+            self.socket = SocketIOClient(socketURL: NSURL(string: ("http://" + ip + ":8900"))!)
+            self.addHandlers()
+            self.socket.connect()
+            
+        }))
+        presentViewController(newWordPrompt, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func ConnectToServerTapped(sender: AnyObject) {
+        promptUserOnDevice()
     }
 }
 
