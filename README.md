@@ -7,37 +7,37 @@ An example of socket.io-client for Swift in the form of a TicTacToe app
 
 
 
-## Gettings Started
+## Getting Started
 
-- Clone the Reopo 
+- Clone the Repo 
 `git clone https://github.com/nuclearace/socket.io-client-swift-example.git`
 
 ### Setup Server
-Open the project directory in terminal and spin up the server localy.
+Open the project directory in terminal and spin up the server locally.
 
  - `cd socket.io-client-swift-example`
  - `npm install`
- - `cd sever`
+ - `cd server`
  - `npm install`
  - `node index.js`
 
 This launches a node server on your local machine listening on port `8900`.
 
 ### Setup First Client
-Open the socket.io-client-swift-example project in XCode.
-Via terminal navigate to the project directory and type this.
+Open the socket.io-client-swift-example project in Xcode.
+Via terminal, navigate to the project directory and type this:
  - `open -a Xcode TicTacIOiOS.xcodeproj`
-Or open via finder.
+Or open via Finder.
 
-Select a simulator `hit Run`, the app will build and once it connects to the server you will get a "adding player" message in your terminal window.
+Select a simulator, hit `Run`, the app will build and once it connects to the server you will get a "adding player" message in your terminal window.
 
 ### Setup Second Client
 Now you just need to run the project on a real device.
  - Connect your phone via lightning connector to your computer.
- - Select your phone as the device and hit `run`.
- - Once the app launches you will be promted with a Alet asking for the IP Address of the server.
+ - Select your phone as the device and hit `Run`.
+ - Once the app launches you will be prompted with an Alert asking for the IP Address of the server.
 
-looks like this.
+It will look like this.
 <center>
 ![](/documentation/input_IP_Address.png)
 <center>
@@ -48,6 +48,6 @@ looks like this.
 
  - Look for your "IP Address" and type it into your phone.
 
-You should see a "adding player" message appear on the terminal. That means the Phone sucsessfully connected to the server.xc
+You should see a "adding player" message appear on the terminal. That means the Phone sucsessfully connected to the server.
 
-Now you can play TicTacToe with your self. Have fun 😱
+Now you can play TicTacToe with yourself. Have fun! 😱
