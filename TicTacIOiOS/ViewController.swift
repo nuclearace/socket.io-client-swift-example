@@ -31,15 +31,15 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         
         backgroundGrad.frame = self.view.bounds
         
-        let colors = [UIColor(red: 127, green: 0, blue: 127, alpha: 1).CGColor,
-                      UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor]
+        let colors = [UIColor(red: 127, green: 0, blue: 127, alpha: 1).cgColor,
+                      UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor]
         
         backgroundGrad.colors = colors
-        view.layer.insertSublayer(backgroundGrad, atIndex: 0)
+        view.layer.insertSublayer(backgroundGrad, at: 0)
 
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         // Check it the user in on a simulator is so default to localhost if not prompt for the IPAddress of the example server.
         
@@ -73,14 +73,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         
         
         socket?.on("playerMove") {[weak self] data, ack in
-            if let name = data[0] as? String, x = data[1] as? Int, y = data[2] as? Int {
-                self?.handlePlayerMove(name, coord: (x, y))
+            if let name = data[0] as? String, let x = data[1] as? Int, let y = data[2] as? Int {
+                self?.handlePlayerMove(name: name, coord: (x, y))
             }
         }
         
         socket?.on("win") {[weak self] data, ack in
-            if let name = data[0] as? String, typeDict = data[1] as? NSDictionary {
-                self?.handleWin(name, type: typeDict)
+            if let name = data[0] as? String, let typeDict = data[1] as? NSDictionary {
+                self?.handleWin(name: name, type: typeDict)
             }
         }
         
@@ -91,24 +91,24 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         
         socket?.on("currentTurn") {[weak self] data, ack in
             if let name = data[0] as? String {
-                self?.handleCurrentTurn(name)
+                self?.handleCurrentTurn(name: name)
                 
             }
         }
         
         socket?.on("gameReset") {[weak self] data, ack in
-            let alert = UIAlertController(title: "Play Again?", message: "Do you want to play another round?", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Play Again?", message: "Do you want to play another round?", preferredStyle: .alert)
             
-            let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (UIAlertAction) in
+            let yesButton = UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
                 self!.resetAck?.with(false)
             })
-            let noButton = UIAlertAction(title: "No", style: .Cancel, handler: { (UIAlertAction) in
+            let noButton = UIAlertAction(title: "No", style: .cancel, handler: { (UIAlertAction) in
                 self!.handleGameReset()
                 self!.resetAck?.with(true)
             })
             alert.addAction(yesButton)
             alert.addAction(noButton)
-            self!.presentViewController(alert, animated: true, completion: nil)
+            self!.present(alert, animated: true, completion: nil)
         }
         
         socket?.on("gameOver") {data, ack in
@@ -165,8 +165,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 to = btn6.center
                 from = btn8.center
             default:
-                to = CGPointMake(0.0, 0.0)
-                from = CGPointMake(0.0, 0.0)
+                to = CGPoint(x:0.0, y:0.0)
+                from = CGPoint(x:0.0, y:0.0)
             }
         } else if winType == "col" {
             let row = type["num"] as! Int
@@ -182,8 +182,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 to = btn2.center
                 from = btn8.center
             default:
-                to = CGPointMake(0.0, 0.0)
-                from = CGPointMake(0.0, 0.0)
+                to = CGPoint(x:0.0, y:0.0)
+                from = CGPoint(x:0.0, y:0.0)
             }
         } else {
             let coord = type["coord"] as! NSDictionary
@@ -204,20 +204,20 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 to = btn2.center
                 from = btn6.center
             default:
-                to = CGPointMake(0.0, 0.0)
-                from = CGPointMake(0.0, 0.0)
+                to = CGPoint(x:0.0, y:0.0)
+                from = CGPoint(x:0.0, y:0.0)
             }
         }
         
         let path = UIBezierPath()
-        path.moveToPoint(from)
-        path.addLineToPoint(to)
+        path.move(to: from)
+        path.addLine(to: to)
         
         let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.CGPath
-        shapeLayer.strokeColor = UIColor.whiteColor().CGColor
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.white.cgColor
         shapeLayer.lineWidth = 3.0
-        shapeLayer.fillColor = UIColor.clearColor().CGColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
         view.layer.addSublayer(shapeLayer)
     }
     
@@ -234,25 +234,25 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     func handleGameReset() {
-        btn0.setTitle("-", forState: UIControlState.Normal)
-        btn1.setTitle("-", forState: UIControlState.Normal)
-        btn2.setTitle("-", forState: UIControlState.Normal)
-        btn3.setTitle("-", forState: UIControlState.Normal)
-        btn4.setTitle("-", forState: UIControlState.Normal)
-        btn5.setTitle("-", forState: UIControlState.Normal)
-        btn6.setTitle("-", forState: UIControlState.Normal)
-        btn7.setTitle("-", forState: UIControlState.Normal)
-        btn8.setTitle("-", forState: UIControlState.Normal)
+        btn0.setTitle("-", for: UIControlState.normal)
+        btn1.setTitle("-", for: UIControlState.normal)
+        btn2.setTitle("-", for: UIControlState.normal)
+        btn3.setTitle("-", for: UIControlState.normal)
+        btn4.setTitle("-", for: UIControlState.normal)
+        btn5.setTitle("-", for: UIControlState.normal)
+        btn6.setTitle("-", for: UIControlState.normal)
+        btn7.setTitle("-", for: UIControlState.normal)
+        btn8.setTitle("-", for: UIControlState.normal)
         
-        btn0.enabled = true
-        btn1.enabled = true
-        btn2.enabled = true
-        btn3.enabled = true
-        btn4.enabled = true
-        btn5.enabled = true
-        btn6.enabled = true
-        btn7.enabled = true
-        btn8.enabled = true
+        btn0.isEnabled = true
+        btn1.isEnabled = true
+        btn2.isEnabled = true
+        btn3.isEnabled = true
+        btn4.isEnabled = true
+        btn5.isEnabled = true
+        btn6.isEnabled = true
+        btn7.isEnabled = true
+        btn8.isEnabled = true
         
         view.layer.sublayers?.removeLast()
         label.text = "Waiting for Opponent"
@@ -261,32 +261,32 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     func handlePlayerMove(name: String, coord: (Int, Int)) {
         switch coord {
         case (0, 0):
-            btn0.setTitle(name, forState: UIControlState.Disabled)
-            btn0.enabled = false
+            btn0.setTitle(name, for: UIControlState.disabled)
+            btn0.isEnabled = false
         case (0, 1):
-            btn1.setTitle(name, forState: UIControlState.Disabled)
-            btn1.enabled = false
+            btn1.setTitle(name, for: UIControlState.disabled)
+            btn1.isEnabled = false
         case (0, 2):
-            btn2.setTitle(name, forState: UIControlState.Disabled)
-            btn2.enabled = false
+            btn2.setTitle(name, for: UIControlState.disabled)
+            btn2.isEnabled = false
         case (1, 0):
-            btn3.setTitle(name, forState: UIControlState.Disabled)
-            btn3.enabled = false
+            btn3.setTitle(name, for: UIControlState.disabled)
+            btn3.isEnabled = false
         case (1, 1):
-            btn4.setTitle(name, forState: UIControlState.Disabled)
-            btn4.enabled = false
+            btn4.setTitle(name, for: UIControlState.disabled)
+            btn4.isEnabled = false
         case (1, 2):
-            btn5.setTitle(name, forState: UIControlState.Disabled)
-            btn5.enabled = false
+            btn5.setTitle(name, for: UIControlState.disabled)
+            btn5.isEnabled = false
         case (2, 0):
-            btn6.setTitle(name, forState: UIControlState.Disabled)
-            btn6.enabled = false
+            btn6.setTitle(name, for: UIControlState.disabled)
+            btn6.isEnabled = false
         case (2, 1):
-            btn7.setTitle(name, forState: UIControlState.Disabled)
-            btn7.enabled = false
+            btn7.setTitle(name, for: UIControlState.disabled)
+            btn7.isEnabled = false
         case (2, 2):
-            btn8.setTitle(name, forState: UIControlState.Disabled)
-            btn8.enabled = false
+            btn8.setTitle(name, for: UIControlState.disabled)
+            btn8.isEnabled = false
         default:
             return
         }
@@ -302,29 +302,30 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     func handleWin(name: String, type: NSDictionary) {
         label.text = "Player \(name) won!"
-        drawWinLine(type)
+        drawWinLine(type: type)
     }
     
     // Prompt for user to enter IP Address of the server.
     func promptUserOnDevice() {
-        let newWordPrompt = UIAlertController(title: "Server IP Address", message: "Open your System Preferences on the computer running the example server and enter the ip address of that computer to connect to it", preferredStyle: UIAlertControllerStyle.Alert)
-        newWordPrompt.addTextFieldWithConfigurationHandler({(textField: UITextField) in
+        let newWordPrompt = UIAlertController(title: "Server IP Address", message: "Open your System Preferences on the computer running the example server and enter the ip address of that computer to connect to it", preferredStyle: UIAlertControllerStyle.alert)
+        newWordPrompt.addTextField(configurationHandler: {(textField: UITextField) in
             textField.placeholder = "IP Address"
+            //textField.text = "192.168.20.135"
             self.inputTextField = textField
             
         })
-        newWordPrompt.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
-        newWordPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:{ (action) -> Void in
+        newWordPrompt.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        newWordPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{ (action) -> Void in
             let textfeild = newWordPrompt.textFields![0] as UITextField
             
             guard let ip = textfeild.text else { return }
             print("Attempting to connect to http://" + ip + ":8900")
-            self.socket = SocketIOClient(socketURL: NSURL(string: ("http://" + ip + ":8900"))!)
+            self.socket = SocketIOClient(socketURL: NSURL(string: ("http://" + ip + ":8900"))! as URL)
             self.addHandlers()
             self.socket?.connect()
             
         }))
-        presentViewController(newWordPrompt, animated: true, completion: nil)
+        present(newWordPrompt, animated: true, completion: nil)
         
     }
     
