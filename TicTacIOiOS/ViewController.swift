@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SocketIO
 
 class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var btn0:UIButton!
@@ -18,7 +19,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var btn7:UIButton!
     @IBOutlet weak var btn8:UIButton!
     @IBOutlet weak var label:UILabel!
-    let socket = SocketIOClient(socketURL: NSURL(string:"http://localhost:8900")!)
+    let socket = SocketIOClient(socketURL: URL(string:"http://localhost:8900")!)
     var name: String?
     var resetAck: SocketAckEmitter?
     
@@ -31,11 +32,11 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         let grad = CAGradientLayer()
         grad.frame = self.view.bounds
         
-        let colors = [UIColor(red: 127, green: 0, blue: 127, alpha: 1).CGColor,
-            UIColor(red: 0, green: 0, blue: 0, alpha: 1).CGColor]
+        let colors = [UIColor(red: 127, green: 0, blue: 127, alpha: 1).cgColor,
+            UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor]
         
         grad.colors = colors
-        view.layer.insertSublayer(grad, atIndex: 0)
+        view.layer.insertSublayer(grad, at: 0)
     }
     
     func addHandlers() {
@@ -51,13 +52,13 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }
         
         socket.on("playerMove") {[weak self] data, ack in
-            if let name = data[0] as? String, x = data[1] as? Int, y = data[2] as? Int {
+            if let name = data[0] as? String, let x = data[1] as? Int, let y = data[2] as? Int {
                 self?.handlePlayerMove(name, coord: (x, y))
             }
         }
         
         socket.on("win") {[weak self] data, ack in
-            if let name = data[0] as? String, typeDict = data[1] as? NSDictionary {
+            if let name = data[0] as? String, let typeDict = data[1] as? NSDictionary {
                 self?.handleWin(name, type: typeDict)
             }
         }
@@ -86,10 +87,10 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             exit(0)
         }
         
-        socket.onAny {print("Got event: \($0.event), with items: \($0.items)")}
+        socket.onAny {print("Got event: \($0.event), with items: \($0.items!)")}
     }
     
-    @IBAction func btnClicked(btn: UIButton) {
+    @IBAction func btnClicked(_ btn: UIButton) {
         let coord:(x: Int, y: Int)
         
         switch btn.tag {
@@ -118,7 +119,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         socket.emit("playerMove", coord.x, coord.y)
     }
     
-    func drawWinLine(type: NSDictionary) {
+    func drawWinLine(_ type: NSDictionary) {
         let winType = type["type"] as! String
         let to: CGPoint
         let from: CGPoint
@@ -137,8 +138,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 to = btn6.center
                 from = btn8.center
             default:
-                to = CGPointMake(0.0, 0.0)
-                from = CGPointMake(0.0, 0.0)
+                to = CGPoint(x: 0.0, y: 0.0)
+                from = CGPoint(x: 0.0, y: 0.0)
             }
         } else if winType == "col" {
             let row = type["num"] as! Int
@@ -154,8 +155,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 to = btn2.center
                 from = btn8.center
             default:
-                to = CGPointMake(0.0, 0.0)
-                from = CGPointMake(0.0, 0.0)
+                to = CGPoint(x: 0.0, y: 0.0)
+                from = CGPoint(x: 0.0, y: 0.0)
             }
         } else {
             let coord = type["coord"] as! NSDictionary
@@ -176,24 +177,24 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 to = btn2.center
                 from = btn6.center
             default:
-                to = CGPointMake(0.0, 0.0)
-                from = CGPointMake(0.0, 0.0)
+                to = CGPoint(x: 0.0, y: 0.0)
+                from = CGPoint(x: 0.0, y: 0.0)
             }
         }
         
         let path = UIBezierPath()
-        path.moveToPoint(from)
-        path.addLineToPoint(to)
+        path.move(to: from)
+        path.addLine(to: to)
         
         let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.CGPath
-        shapeLayer.strokeColor = UIColor.whiteColor().CGColor
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.white.cgColor
         shapeLayer.lineWidth = 3.0
-        shapeLayer.fillColor = UIColor.clearColor().CGColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
         view.layer.addSublayer(shapeLayer)
     }
     
-    func handleCurrentTurn(name: String) {
+    func handleCurrentTurn(_ name: String) {
         if name == self.name! {
             label.text = "Your turn!"
         } else {
@@ -206,59 +207,59 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     func handleGameReset() {
-        btn0.setTitle("-", forState: UIControlState.Normal)
-        btn1.setTitle("-", forState: UIControlState.Normal)
-        btn2.setTitle("-", forState: UIControlState.Normal)
-        btn3.setTitle("-", forState: UIControlState.Normal)
-        btn4.setTitle("-", forState: UIControlState.Normal)
-        btn5.setTitle("-", forState: UIControlState.Normal)
-        btn6.setTitle("-", forState: UIControlState.Normal)
-        btn7.setTitle("-", forState: UIControlState.Normal)
-        btn8.setTitle("-", forState: UIControlState.Normal)
+        btn0.setTitle("-", for: UIControlState())
+        btn1.setTitle("-", for: UIControlState())
+        btn2.setTitle("-", for: UIControlState())
+        btn3.setTitle("-", for: UIControlState())
+        btn4.setTitle("-", for: UIControlState())
+        btn5.setTitle("-", for: UIControlState())
+        btn6.setTitle("-", for: UIControlState())
+        btn7.setTitle("-", for: UIControlState())
+        btn8.setTitle("-", for: UIControlState())
         
-        btn0.enabled = true
-        btn1.enabled = true
-        btn2.enabled = true
-        btn3.enabled = true
-        btn4.enabled = true
-        btn5.enabled = true
-        btn6.enabled = true
-        btn7.enabled = true
-        btn8.enabled = true
+        btn0.isEnabled = true
+        btn1.isEnabled = true
+        btn2.isEnabled = true
+        btn3.isEnabled = true
+        btn4.isEnabled = true
+        btn5.isEnabled = true
+        btn6.isEnabled = true
+        btn7.isEnabled = true
+        btn8.isEnabled = true
         
         view.layer.sublayers?.removeLast()
         label.text = "Waiting for Opponent"
     }
     
-    func handlePlayerMove(name: String, coord: (Int, Int)) {
+    func handlePlayerMove(_ name: String, coord: (Int, Int)) {
         switch coord {
         case (0, 0):
-            btn0.setTitle(name, forState: UIControlState.Disabled)
-            btn0.enabled = false
+            btn0.setTitle(name, for: UIControlState.disabled)
+            btn0.isEnabled = false
         case (0, 1):
-            btn1.setTitle(name, forState: UIControlState.Disabled)
-            btn1.enabled = false
+            btn1.setTitle(name, for: UIControlState.disabled)
+            btn1.isEnabled = false
         case (0, 2):
-            btn2.setTitle(name, forState: UIControlState.Disabled)
-            btn2.enabled = false
+            btn2.setTitle(name, for: UIControlState.disabled)
+            btn2.isEnabled = false
         case (1, 0):
-            btn3.setTitle(name, forState: UIControlState.Disabled)
-            btn3.enabled = false
+            btn3.setTitle(name, for: UIControlState.disabled)
+            btn3.isEnabled = false
         case (1, 1):
-            btn4.setTitle(name, forState: UIControlState.Disabled)
-            btn4.enabled = false
+            btn4.setTitle(name, for: UIControlState.disabled)
+            btn4.isEnabled = false
         case (1, 2):
-            btn5.setTitle(name, forState: UIControlState.Disabled)
-            btn5.enabled = false
+            btn5.setTitle(name, for: UIControlState.disabled)
+            btn5.isEnabled = false
         case (2, 0):
-            btn6.setTitle(name, forState: UIControlState.Disabled)
-            btn6.enabled = false
+            btn6.setTitle(name, for: UIControlState.disabled)
+            btn6.isEnabled = false
         case (2, 1):
-            btn7.setTitle(name, forState: UIControlState.Disabled)
-            btn7.enabled = false
+            btn7.setTitle(name, for: UIControlState.disabled)
+            btn7.isEnabled = false
         case (2, 2):
-            btn8.setTitle(name, forState: UIControlState.Disabled)
-            btn8.enabled = false
+            btn8.setTitle(name, for: UIControlState.disabled)
+            btn8.isEnabled = false
         default:
             return
         }
@@ -272,12 +273,12 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }
     }
     
-    func handleWin(name: String, type: NSDictionary) {
+    func handleWin(_ name: String, type: NSDictionary) {
         label.text = "Player \(name) won!"
         drawWinLine(type)
     }
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if buttonIndex == 0 {
             resetAck?.with(false)
         } else {
