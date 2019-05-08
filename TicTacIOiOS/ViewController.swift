@@ -19,14 +19,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var btn7:UIButton!
     @IBOutlet weak var btn8:UIButton!
     @IBOutlet weak var label:UILabel!
+    let manager = SocketManager(socketURL: URL(string: "http://localhost:8900")!, config: [.log(true), .compress])
     var socket:SocketIOClient!
     var name: String?
     var resetAck: SocketAckEmitter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let manager = SocketManager(socketURL: URL(string: "http://localhost:8900")!, config: [.log(true), .compress])
-        socket = SocketIOClient(manager: manager, nsp: "TTT")
+        socket = manager.defaultSocket
         
         addHandlers()
         socket.connect()
