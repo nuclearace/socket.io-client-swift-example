@@ -19,12 +19,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var btn7:UIButton!
     @IBOutlet weak var btn8:UIButton!
     @IBOutlet weak var label:UILabel!
-    let socket = SocketIOClient(socketURL: URL(string:"http://localhost:8900")!)
+    var socket:SocketIOClient!
     var name: String?
     var resetAck: SocketAckEmitter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let manager = SocketManager(socketURL: URL(string: "http://localhost:8900")!, config: [.log(true), .compress])
+        socket = SocketIOClient(manager: manager, nsp: "TTT")
         
         addHandlers()
         socket.connect()
@@ -207,15 +209,15 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     func handleGameReset() {
-        btn0.setTitle("-", for: UIControlState())
-        btn1.setTitle("-", for: UIControlState())
-        btn2.setTitle("-", for: UIControlState())
-        btn3.setTitle("-", for: UIControlState())
-        btn4.setTitle("-", for: UIControlState())
-        btn5.setTitle("-", for: UIControlState())
-        btn6.setTitle("-", for: UIControlState())
-        btn7.setTitle("-", for: UIControlState())
-        btn8.setTitle("-", for: UIControlState())
+        btn0.setTitle("-", for: UIControl.State())
+        btn1.setTitle("-", for: UIControl.State())
+        btn2.setTitle("-", for: UIControl.State())
+        btn3.setTitle("-", for: UIControl.State())
+        btn4.setTitle("-", for: UIControl.State())
+        btn5.setTitle("-", for: UIControl.State())
+        btn6.setTitle("-", for: UIControl.State())
+        btn7.setTitle("-", for: UIControl.State())
+        btn8.setTitle("-", for: UIControl.State())
         
         btn0.isEnabled = true
         btn1.isEnabled = true
@@ -234,31 +236,31 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     func handlePlayerMove(_ name: String, coord: (Int, Int)) {
         switch coord {
         case (0, 0):
-            btn0.setTitle(name, for: UIControlState.disabled)
+            btn0.setTitle(name, for: .disabled)
             btn0.isEnabled = false
         case (0, 1):
-            btn1.setTitle(name, for: UIControlState.disabled)
+            btn1.setTitle(name, for: .disabled)
             btn1.isEnabled = false
         case (0, 2):
-            btn2.setTitle(name, for: UIControlState.disabled)
+            btn2.setTitle(name, for: .disabled)
             btn2.isEnabled = false
         case (1, 0):
-            btn3.setTitle(name, for: UIControlState.disabled)
+            btn3.setTitle(name, for: .disabled)
             btn3.isEnabled = false
         case (1, 1):
-            btn4.setTitle(name, for: UIControlState.disabled)
+            btn4.setTitle(name, for: .disabled)
             btn4.isEnabled = false
         case (1, 2):
-            btn5.setTitle(name, for: UIControlState.disabled)
+            btn5.setTitle(name, for: .disabled)
             btn5.isEnabled = false
         case (2, 0):
-            btn6.setTitle(name, for: UIControlState.disabled)
+            btn6.setTitle(name, for: .disabled)
             btn6.isEnabled = false
         case (2, 1):
-            btn7.setTitle(name, for: UIControlState.disabled)
+            btn7.setTitle(name, for: .disabled)
             btn7.isEnabled = false
         case (2, 2):
-            btn8.setTitle(name, for: UIControlState.disabled)
+            btn8.setTitle(name, for: .disabled)
             btn8.isEnabled = false
         default:
             return
